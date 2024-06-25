@@ -199,10 +199,7 @@ if(MZ_ZLIB)
     elseif(MZ_FETCH_LIBS)
         set(ZLIB_BUILD_EXAMPLES OFF CACHE BOOL "" FORCE)
 
-        clone_repo(zlib https://github.com/madler/zlib v1.3)
-        if(EXISTS ${ZLIB_SOURCE_DIR}/zconf.h.included)
-            file(RENAME ${ZLIB_SOURCE_DIR}/zconf.h.included ${ZLIB_SOURCE_DIR}/zconf.h)
-        endif()
+        clone_repo(zlib https://github.com/geode-sdk/zlib dacf11d)
 
         # Don't automatically add all targets to the solution
         add_subdirectory(${ZLIB_SOURCE_DIR} ${ZLIB_BINARY_DIR} EXCLUDE_FROM_ALL)
