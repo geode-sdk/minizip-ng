@@ -197,9 +197,12 @@ if(MZ_ZLIB)
         set(PC_PRIVATE_DEPS "zlib")
         set(ZLIB_COMPAT ON)
     elseif(MZ_FETCH_LIBS)
-        set(ZLIB_ENABLE_TESTS OFF CACHE BOOL "Build zlib-ng tests" FORCE)
+        set(ZLIB_BUILD_EXAMPLES OFF CACHE BOOL "" FORCE)
 
-        clone_repo(zlib https://github.com/zlib-ng/zlib-ng stable)
+        clone_repo(zlib https://github.com/madler/zlib v1.3)
+        if(EXISTS ${ZLIB_SOURCE_DIR}/zconf.h.included)
+            file(RENAME ${ZLIB_SOURCE_DIR}/zconf.h.included ${ZLIB_SOURCE_DIR}/zconf.h)
+        endif()
 
         # Don't automatically add all targets to the solution
         add_subdirectory(${ZLIB_SOURCE_DIR} ${ZLIB_BINARY_DIR} EXCLUDE_FROM_ALL)
