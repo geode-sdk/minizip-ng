@@ -199,7 +199,7 @@ if(MZ_ZLIB)
     elseif(MZ_FETCH_LIBS)
         set(ZLIB_BUILD_EXAMPLES OFF CACHE BOOL "" FORCE)
 
-        clone_repo(zlib https://github.com/geode-sdk/zlib 254476c)
+        clone_repo(zlib https://github.com/geode-sdk/zlib 5265c92)
 
         # Don't automatically add all targets to the solution
         add_subdirectory(${ZLIB_SOURCE_DIR} ${ZLIB_BINARY_DIR} EXCLUDE_FROM_ALL)
